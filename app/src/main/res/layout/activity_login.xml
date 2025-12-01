@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#9E54A1AB"
-    tools:context=".login">
+    tools:context=".Vista.login">
 
     <ImageView
         android:id="@+id/imageView"
@@ -18,8 +18,7 @@
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/login" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="374dp"
@@ -46,13 +45,13 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/btnAcceder"
+                app:layout_constraintEnd_toEndOf="@+id/btnLogin"
                 app:layout_constraintHorizontal_bias="0.333"
-                app:layout_constraintStart_toStartOf="@+id/btnAcceder"
-                app:layout_constraintTop_toBottomOf="@+id/btnAcceder" />
+                app:layout_constraintStart_toStartOf="@+id/btnLogin"
+                app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
             <EditText
-                android:id="@+id/edtUsuario"
+                android:id="@+id/etCorreo"
                 android:layout_width="234dp"
                 android:layout_height="51dp"
 
@@ -80,13 +79,13 @@
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/edtUsuario"
+                app:layout_constraintEnd_toEndOf="@+id/etCorreo"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/edtUsuario"
-                app:layout_constraintTop_toTopOf="@+id/edtUsuario" />
+                app:layout_constraintStart_toStartOf="@+id/etCorreo"
+                app:layout_constraintTop_toTopOf="@+id/etCorreo" />
 
             <Button
-                android:id="@+id/btnAcceder"
+                android:id="@+id/btnLogin"
                 android:layout_width="217dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="44dp"

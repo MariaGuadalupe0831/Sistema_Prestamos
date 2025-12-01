@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E7CBE7E6"
-    tools:context=".Registro">
+    tools:context=".Vista.Registro">
 
 
     <ImageView
@@ -20,69 +20,101 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="30dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginVertical="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="367dp">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
 
-            <EditText
-                android:id="@+id/etNombreUsuario"
-                android:layout_width="341dp"
-                android:layout_height="56dp"
-                android:layout_marginStart="26dp"
-                android:layout_marginTop="44dp"
-                android:layout_marginEnd="10dp"
-                android:hint="Nombre de usuario"
-                android:inputType="text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
 
-            <Button
-                android:id="@+id/btnRegistrar"
-                android:layout_width="320dp"
-                android:layout_height="52dp"
-                android:layout_marginTop="32dp"
-                android:text="Registrar"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="@+id/etPasswordRegistro"
-                app:layout_constraintHorizontal_bias="0.045"
-                app:layout_constraintStart_toStartOf="@+id/etPasswordRegistro"
-                app:layout_constraintTop_toBottomOf="@+id/etPasswordRegistro" />
+                <EditText
+                    android:id="@+id/et_nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Nombre"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp" />
 
-            <EditText
-                android:id="@+id/etEmail"
-                android:layout_width="341dp"
-                android:layout_height="56dp"
-                android:layout_marginTop="20dp"
-                android:hint="Correo electrónico"
-                android:inputType="textEmailAddress"
-                app:layout_constraintEnd_toEndOf="@+id/etNombreUsuario"
-                app:layout_constraintHorizontal_bias="0.062"
-                app:layout_constraintStart_toStartOf="@+id/etNombreUsuario"
-                app:layout_constraintTop_toBottomOf="@+id/etNombreUsuario" />
+                <EditText
+                    android:id="@+id/et_apellido_paterno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Apellido Paterno"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp" />
 
-            <EditText
-                android:id="@+id/etPasswordRegistro"
-                android:layout_width="342dp"
-                android:layout_height="57dp"
-                android:layout_marginTop="12dp"
-                android:hint="Contraseña"
-                android:inputType="textPassword"
-                app:layout_constraintEnd_toEndOf="@+id/etEmail"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/etEmail"
-                app:layout_constraintTop_toBottomOf="@+id/etEmail" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                <EditText
+                    android:id="@+id/et_apellido_materno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Apellido Materno (Opcional)"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp" />
+
+                <EditText
+                    android:id="@+id/et_matricula"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Matrícula"
+                    android:inputType="text"
+                    android:minHeight="48dp" />
+
+                <EditText
+                    android:id="@+id/et_correo_registro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Correo electrónico"
+                    android:inputType="textEmailAddress"
+                    android:minHeight="48dp" />
+
+                <EditText
+                    android:id="@+id/et_tipo_usuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Tipo de Usuario (EJ: ALUMNO)"
+                    android:inputType="textCapCharacters"
+                    android:minHeight="48dp" />
+
+                <EditText
+                    android:id="@+id/et_password_registro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:hint="Contraseña"
+                    android:inputType="textPassword"
+                    android:minHeight="48dp" />
+
+                <Button
+                    android:id="@+id/btn_registrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:text="Registrar Usuario"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
