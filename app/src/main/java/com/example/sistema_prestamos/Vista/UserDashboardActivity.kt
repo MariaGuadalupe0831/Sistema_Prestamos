@@ -21,7 +21,6 @@ class UserDashboardActivity : AppCompatActivity() {
     private lateinit var sessionManager: SessionManager
     private lateinit var btnLogout: Button
     private lateinit var tvWelcome: TextView
-
     private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,36 +33,57 @@ class UserDashboardActivity : AppCompatActivity() {
             insets
         }
         sessionManager = SessionManager(applicationContext)
+        val currentRole = sessionManager.getUserRole()
 
-        val currentRole = sessionManager.getUserRole()?.lowercase()
-
-        // --- VERIFICACIÓN DE ROL CRÍTICA ---
-        // Redirigimos si no está logeado o si por alguna razón es un rol que no debería estar aquí
-        if (currentRole == null || currentRole == "administrador") {
-            sessionManager.logout()
+        // --- 1. Verificación de Seguridad ---
+        if (!sessionManager.isLoggedIn()) {
             startActivity(Intent(this, login::class.java))
             finish()
             return
         }
-        // ------------------------------------
 
-        recyclerView = findViewById(R.id.rv_prestamos)
+        // --- 2. Inicialización de Vistas ---
+        tvWelcome = findViewById(R.id.tv_user_welcome) // Asumiendo que tienes un TextView de bienvenida
+        btnLogout = findViewById(R.id.btn_user_logout) // Asumiendo que tienes un botón de logout
+
+        // Inicialización del RecyclerView
+        // ¡VERIFICA ESTE ID en tu XML!
+        recyclerView = findViewById(R.id.rv_noticias)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        // Inicialización de Vistas
-        tvWelcome = findViewById(R.id.tv_user_welcome)
-        btnLogout = findViewById(R.id.btn_user_logout)
 
+        tvWelcome.text = "Bienvenido, ${currentRole ?: "Usuario"}"
 
-        tvWelcome.text = "Bienvenido, rol: ${currentRole.uppercase()}"
+        // --- 3. Carga de Datos ---
+        loadNoticias() // Carga la lista de noticias
 
-        // Lógica específica para usuarios (ver préstamos, buscar equipos, etc.)...
-
-        // Botón de Logout
+        // --- 4. Listener de Logout ---
         btnLogout.setOnClickListener {
             logoutUser()
         }
     }
 
+    private fun loadNoticias() {
+        lifecycleScope.launch {
+            try {
+                val response = RetrofitInstance.api.getNoticias()
+
+                if (response.isSuccessful) {
+                    val result = response.body()
+                    if (result != null && result.success) {
+                        // Conecta la lista de noticias al RecyclerView
+                        recyclerView.adapter = NoticaAdapter(result.noticias)
+                        Toast.makeText(this@UserDashboardActivity, result.message, Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this@UserDashboardActivity, "No hay noticias disponibles: ${result?.message}", Toast.LENGTH_LONG).show()
+                    }
+                } else {
+                    Toast.makeText(this@UserDashboardActivity, "Error de servidor (${response.code()})", Toast.LENGTH_LONG).show()
+                }
+            } catch (e: Exception) {
+                Toast.makeText(this@UserDashboardActivity, "Error de red: ${e.message}", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
     private fun logoutUser() {
         sessionManager.logout()
         startActivity(Intent(this, login::class.java))
