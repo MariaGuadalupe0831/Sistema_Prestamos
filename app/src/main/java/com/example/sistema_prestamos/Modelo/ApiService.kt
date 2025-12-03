@@ -14,7 +14,4 @@ interface ApiService {
     // Se asume que RegisterRequest y LoginResponse están en el mismo paquete
     suspend fun registerUser(@Body request: RegisterRequest): Response<LoginResponse>
 
-    @POST("get_historial_prestamos.php")
-    // Se asume que HistorialRequest y HistorialResponse están en el mismo paquete
-    suspend fun getHistorialPrestamos(@Body request: HistorialRequest): Response<HistorialResponse>
 }
