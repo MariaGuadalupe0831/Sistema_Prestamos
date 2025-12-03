@@ -1,7 +1,6 @@
 package com.example.sistema_prestamos.Modelo
 
-import com.example.sistema_prestamos.Modelo.LoginRequest
-import com.example.sistema_prestamos.Modelo.LoginResponse
+// Interfaz que define los métodos para interactuar con tu API REST
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -12,6 +11,10 @@ interface ApiService {
     suspend fun loginUser(@Body request: LoginRequest): Response<LoginResponse>
 
     @POST("registro.php")
+    // Se asume que RegisterRequest y LoginResponse están en el mismo paquete
     suspend fun registerUser(@Body request: RegisterRequest): Response<LoginResponse>
-// Nota: Usamos LoginResponse para la respuesta, ya que solo necesitamos success/message
+
+    @POST("get_historial_prestamos.php")
+    // Se asume que HistorialRequest y HistorialResponse están en el mismo paquete
+    suspend fun getHistorialPrestamos(@Body request: HistorialRequest): Response<HistorialResponse>
 }

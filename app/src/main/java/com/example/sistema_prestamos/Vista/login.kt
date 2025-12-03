@@ -18,8 +18,8 @@ import com.example.sistema_prestamos.Modelo.LoginRequest
 import com.example.sistema_prestamos.Modelo.LoginResponse
 import com.example.sistema_prestamos.Modelo.SessionManager
 
-class login : AppCompatActivity() {
 
+class login : AppCompatActivity() {
     private lateinit var sessionManager: SessionManager
 
     // Declaración de vistas (asume que los IDs son et_correo, et_password, btn_login)
@@ -27,6 +27,7 @@ class login : AppCompatActivity() {
     private lateinit var etPassword: EditText
     private lateinit var btnLogin: Button
     private lateinit var tvRegistrar: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -120,5 +121,4 @@ class login : AppCompatActivity() {
         startActivity(targetIntent)
         finish()
     }
-
 }

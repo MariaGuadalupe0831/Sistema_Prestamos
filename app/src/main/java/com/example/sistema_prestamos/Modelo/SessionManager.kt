@@ -2,7 +2,6 @@ package com.example.sistema_prestamos.Modelo
 
 import android.content.Context
 import android.content.SharedPreferences
-
 class SessionManager(context: Context) {
     // Nombre del archivo de SharedPreferences
     private val prefs: SharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)

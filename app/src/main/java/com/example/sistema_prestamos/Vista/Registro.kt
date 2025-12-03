@@ -1,5 +1,6 @@
 package com.example.sistema_prestamos.Vista
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -25,8 +26,6 @@ class Registro : AppCompatActivity() {
     private lateinit var etTipoUsuario: EditText // Para roles como "ALUMNO", "DOCENTE", etc.
     private lateinit var etPassword: EditText
     private lateinit var btnRegistrar: Button
-
-    // NOTA: Es buena práctica tener un botón para volver al Login, aquí asumimos un botón de atrás estándar.
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -106,5 +105,4 @@ class Registro : AppCompatActivity() {
             }
         }
     }
-
 }
