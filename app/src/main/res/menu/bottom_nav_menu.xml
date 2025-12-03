@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_noticias"
+        android:icon="@drawable/noticias"
+        android:title="Noticias" />
+
+    <item
+        android:id="@+id/nav_prestamos"
+        android:icon="@drawable/descarga"
+        android:title="Mis Préstamos" />
+
+    <item
+        android:id="@+id/nav_catalogo"
+        android:icon="@drawable/catalogo"
+        android:title="Catálogo" />
+
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/cerrarsesion"
+        android:title="Cerrar Sesión" />
+</menu>

@@ -6,27 +6,47 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sistema_prestamos.Modelo.EqYAc
+import com.bumptech.glide.Glide
+import com.example.sistema_prestamos.Modelo.Equipo
 import com.example.sistema_prestamos.R
 
-class CatalogoAdapter(private val Catalogos: List<EqYAc>) : RecyclerView.Adapter<com.example.sistema_prestamos.Vista.CatalogoAdapter.ViewHolder>() {
+class CatalogoAdapter(private var listaEquipos: List<Equipo>) : RecyclerView.Adapter<CatalogoAdapter.ViewHolder>() {
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        // Asegúrate de que estos IDs sean EXACTAMENTE los mismos que en tu item_catalogo.xml
+        val nombre: TextView = itemView.findViewById(R.id.tvNombreEquipo)
+        val descripcion: TextView = itemView.findViewById(R.id.tvDescripcion)
+        val imagen: ImageView = itemView.findViewById(R.id.imgFoto)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val vista = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_catalogo, parent, false)
-        return ViewHolder(vista)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_catalogo, parent, false)
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val cafe = Catalogos[position]
-        holder.txvNombre.text = cafe.nombre
+        val equipo = listaEquipos[position]
+
+        holder.nombre.text = equipo.nombre
+        holder.descripcion.text = equipo.descripcion
+
+        // --- AGREGA ESTO TEMPORALMENTE ---
+        // Esto hará que aparezca un mensajito en la pantalla con la URL que intenta cargar.
+        // Si sale vacío, es que la base de datos está vacía.
+        android.util.Log.d("URL_IMAGEN", "Link: ${equipo.imagenUrl}")
+        // ---------------------------------
+
+        Glide.with(holder.itemView.context)
+            .load(equipo.imagenUrl)
+            .placeholder(R.drawable.ic_launcher_background)
+            .error(R.drawable.ic_launcher_foreground)
+            .into(holder.imagen)
     }
 
-    override fun getItemCount(): Int {
-        return Catalogos.size
-    }
+    override fun getItemCount(): Int = listaEquipos.size
 
-    class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val txvNombre = ItemView.findViewById<TextView>(R.id.txvNombre)
-        val imgfoto = ItemView.findViewById<ImageView>(R.id.imgfoto)
+    fun actualizarLista(nuevaLista: List<Equipo>) {
+        listaEquipos = nuevaLista
+        notifyDataSetChanged()
     }
 }

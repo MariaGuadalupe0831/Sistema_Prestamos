@@ -23,10 +23,20 @@
             android:textStyle="bold"
             />
 
+        <!-- Botón de Regresar -->
+        <Button
+            android:id="@+id/btn_regresar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="← Regresar"
+            android:backgroundTint="#367CF4"
+            android:textColor="#101010"
+            android:layout_margin="8dp" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/rcvCafe"
+            android:id="@+id/rcvEquipos"
             android:layout_margin="25dp"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
