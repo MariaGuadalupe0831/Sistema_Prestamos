@@ -4,14 +4,9 @@ package com.example.sistema_prestamos.Modelo
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
-import retrofit2.Call
 import retrofit2.http.GET
 
 interface ApiService {
-    // Reemplaza "obtener_equipos.php" con tu endpoint real
-    @GET("cata.php")
-    fun obtenerEquipos(): Call<List<Equipo>>
-
     // Método para enviar el POST request de login
     @POST("login.php")
     suspend fun loginUser(@Body request: LoginRequest): Response<LoginResponse>
@@ -20,4 +15,6 @@ interface ApiService {
     // Se asume que RegisterRequest y LoginResponse están en el mismo paquete
     suspend fun registerUser(@Body request: RegisterRequest): Response<LoginResponse>
 
+    @GET("get_noticias.php")
+    suspend fun getNoticias(): Response<NoticiasResponse>
 }
