@@ -1,5 +1,4 @@
 package com.example.sistema_prestamos.Contrato
-
 import com.example.sistema_prestamos.Modelo.Equipo
 
 interface ContratoSisPres {
