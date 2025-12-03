@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,6 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".Vista.UserDashboardActivity">
 
+    <!-- Título Bienvenida -->
     <TextView
         android:id="@+id/tv_user_welcome"
         android:layout_width="wrap_content"
@@ -18,6 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Encabezado de Lista -->
     <TextView
         android:id="@+id/tv_prestamos_header"
         android:layout_width="match_parent"
@@ -32,32 +35,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-
+    <!-- LISTA DE PRÉSTAMOS
+         Se ajusta dinámicamente entre el encabezado y la barra de navegación -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_prestamos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
         android:padding="4dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_prestamo"
 
         app:layout_constraintTop_toBottomOf="@id/tv_prestamos_header"
-        app:layout_constraintBottom_toTopOf="@id/btn_user_logout"
-
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_prestamo"/>
-
-
-    <Button
-        android:id="@+id/btn_user_logout"
-        android:layout_width="0dp"
+    <!-- BARRA DE NAVEGACIÓN INFERIOR (Reemplaza a tus botones) -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cerrar Sesión (Usuario)"
+        android:background="#FFFFFF"
+        app:elevation="16dp"
+        app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="8dp"/>
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

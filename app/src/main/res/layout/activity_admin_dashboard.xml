@@ -26,7 +26,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Panel de control de Administrador"
-            android:layout_marginBottom="100dp"/>
+            android:layout_marginBottom="50dp"/>
+
+        <!-- Botón NUEVO para ir al Catálogo -->
+        <Button
+            android:id="@+id/btn_ver_catalogo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ver Catálogo de Equipos"
+            android:backgroundTint="#2196F3"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="16dp"/>
 
         <Button
             android:id="@+id/btn_admin_logout"
